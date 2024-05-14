@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="icon" href="pics/logo5.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background-color: #4f9deb;
+            color: white;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .company-name {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .header-right {
+            position: relative;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .avatar {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            margin-right: 10px;
+        }
+
+        .dropdown-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .notification-board, .reward-board {
+            background-color: white;
+            width: 45%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-board h2, .reward-board h2 {
+            margin-top: 0;
+        }
+
+        .notification-content, .reward-content {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="pics/logo5.jpg" alt="Logo" class="logo">
+            <h1 class="company-name">Bright Star</h1>
+        </div>
+        <div class="header-right">
+            <div class="user-info" id="user-info">
+                <img src="pics/anh2.jpg" alt="Avatar" class="avatar">
+                <span class="username">Nguyễn Thanh Tuấn</span>
+                <button class="dropdown-toggle" id="dropdown-toggle">&#x25BC;</button>
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <a href="#">Hồ sơ cá nhân</a>
+                    <a href="#">Lịch công việc</a>
+                    <a href="#">Đăng ký tài nguyên</a>
+                    <a href="#">Quy định</a>
+                    <a href="#">Góp ý</a>
+                    <a href="#">Cài đặt</a>
+                    <a href="#">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="notification-board">
+            <h2>Thông báo công việc</h2>
+            <div class="notification-content">
+                <!-- Nội dung thông báo -->
+            </div>
+        </div>
+        <div class="reward-board">
+            <h2>Khen thưởng & Sinh nhật</h2>
+            <div class="reward-content">
+                <!-- Nội dung khen thưởng & sinh nhật -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('dropdown-toggle').addEventListener('click', function() {
+            document.getElementById('dropdown-menu').classList.toggle('show');
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
