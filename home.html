@@ -94,23 +94,69 @@
 
         .main-content {
             display: flex;
-            justify-content: space-around;
-            padding: 20px;
+            flex-direction: row;
+            height: calc(100vh - 50px); /* 50px là chiều cao của header */
         }
 
-        .notification-board, .reward-board {
-            background-color: white;
-            width: 45%;
+        .left-sidebar,
+        .right-sidebar {
+            flex: 1;
+            background-color: #f9f9f9;
+        }
+
+        .center-content {
+            flex: 3;
+            background-color: #f9f9f9;
+        }
+
+        .box {
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
-        .notification-board h2, .reward-board h2 {
+        .box h2 {
             margin-top: 0;
         }
 
-        .notification-content, .reward-content {
-            margin-top: 10px;
+        .schedule-box a {
+            text-decoration: none;
+            color: #4f9deb;
+        }
+
+        .schedule-box a:hover {
+            text-decoration: underline;
+        }
+
+        .clock {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .calendar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .calendar th {
+            background-color: #4f9deb;
+            color: white;
+        }
+
+        .calendar .today {
+            background-color: #ffeb3b;
         }
     </style>
 </head>
@@ -127,27 +173,152 @@
                 <button class="dropdown-toggle" id="dropdown-toggle">&#x25BC;</button>
                 <div class="dropdown-menu" id="dropdown-menu">
                     <a href="#">Hồ sơ cá nhân</a>
-                    <a href="#">Lịch công việc</a>
+                    <a href="#">Lịch phòng</a>
                     <a href="#">Đăng ký tài nguyên</a>
                     <a href="#">Quy định</a>
                     <a href="#">Góp ý</a>
                     <a href="#">Cài đặt</a>
-                    <a href="#">Đăng xuất</a>
+                    <a href="#" id="logout">Đăng xuất</a>
                 </div>
             </div>
         </div>
     </header>
     <main class="main-content">
-        <div class="notification-board">
-            <h2>Thông báo công việc</h2>
-            <div class="notification-content">
-                <!-- Nội dung thông báo -->
+        <div class="left-sidebar">
+            <!-- Nội dung của thanh bên trái -->
+            <div class="box">
+                <h2>Khen thưởng & Sinh nhật</h2>
+                <div class="reward-content">
+                    <!-- Nội dung khen thưởng & sinh nhật -->
+                    <p>Nội dung ngắn...</p>
+                </div>
             </div>
         </div>
-        <div class="reward-board">
-            <h2>Khen thưởng & Sinh nhật</h2>
-            <div class="reward-content">
-                <!-- Nội dung khen thưởng & sinh nhật -->
+        <div class="center-content">
+            <!-- Nội dung của trung tâm -->
+            <div class="box">
+                <h2>Thông báo công việc</h2>
+                <div class="notification-content">
+                    <!-- Nội dung thông báo công việc -->
+                    <p style="font-size:18px">Dựa theo cuốn sách &#8220;Nghệ thuật tập trung&#8221; của nhà tâm thần học Daigo (Mentalist Daigo)</p>
+
+
+
+<p style="font-size:18px"><strong>1. ĐỊA ĐIỂM</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Dựa theo tâm lý học màu sắc, màu xanh nước biển có tác dụng tăng sự tập trung, phù hợp cho việc học hành và làm việc. Vì vậy, sẽ là tốt hơn nếu chúng ta để các món đồ có màu xanh nước biển trên mặt bàn thay vì các món đồ có màu khác như màu đỏ hay màu xanh lá cây.</p>
+
+
+
+<p style="font-size:18px">&#8211; <a></a>Một thí nghiệm tâm lý đã cho thấy nhóm A làm việc trong căn phòng bừa bộn bị phân tâm và kém tập trung hơn so với nhóm B làm việc trong căn phòng sạch sẽ ngăn nắp. Hãy cố gắng giữ phòng ở và bàn làm việc sạch sẽ, bởi sự ngăn nắp gọn gàng là công tắc kích hoạt sự tập trung.</p>
+
+
+
+<p style="font-size:18px">&#8211; Nếu muốn tập trung học ghi nhớ hoặc làm các công việc cần sự tỉ mỉ, chi tiết, nên ngồi ở các căn phòng có trần thấp. Ngược lại, nếu muốn có ý tưởng hay, hãy tới một căn phòng trần cao.</p>
+
+
+
+<p style="font-size:18px"><strong>2. TƯ THẾ</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Tư thế có vai trò quan trọng trong việc cải thiện năng lượng tập trung. Việc chúng ta học và làm việc trong một tư thế tốt sẽ giúp duy trì sự lưu thông của máu lên não, qua đó cung cấp nguồn năng lượng cho sức mạnh ý chí, vốn cần thiết cho sự tập trung.</p>
+
+
+
+<p style="font-size:18px">&#8211; Ngồi lâu sẽ khiến khả năng nhận thức và sự tập trung suy giảm, vì vậy chúng ta nên xen kẽ giữa việc ngồi và đứng dậy. Thậm chí có thể cân nhắc việc đứng làm việc, sử dụng bàn làm việc nâng hạ chiều cao.</p>
+
+
+
+<p style="font-size:18px"><strong>3. ĂN UỐNG</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Nên ăn gì để cải thiện sự tập trung? Câu trả lời đó là thực phẩm có hàm lượng GI thấp. Glycemic Index là chỉ số đường huyết, cho thấy mức độ đường trong máu tăng lên như thế nào sau khi ăn 2 tiếng. Nếu ăn thực phẩm có GI cao (cơm trắng, bánh mì), lượng đường trong máu sẽ tăng lên nhanh, nhưng cũng sẽ đột ngột giảm xuống. Để duy trì được sự tập trung, tốt nhất là ăn thực phẩm có hàm lượng GI thấp, qua đó giúp lượng đường trong máu thay đổi từ từ. Một số thực phẩm GI thấp phù hợp để làm bữa ăn nhẹ trong lúc đang học và làm việc bao gồm: táo, yến mạch, sữa chua, các loại hạt.</p>
+
+
+
+<p style="font-size:18px">&#8211; Dùng sữa chua cùng với cà phê sẽ giúp cơ thể tránh khỏi tình trạng uê oải, mệt mỏi khi tác dụng của caffeine hết.</p>
+
+
+
+<p style="font-size:18px">&#8211; Thiếu nước ảnh hưởng đến não bộ, gây mất cần bằng nội tiết tố, làm giảm sự tập trung. Hãy bổ sung một cốc nước sau mỗi 1-2 tiếng.</p>
+
+
+
+<p style="font-size:18px"><strong>4. CẢM XÚC</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Mỗi cung bậc cảm xúc đều là chìa khóa dẫn đến sự tập trung. Tức giận là cảm xúc gắn bó mật thiết với bản năng sinh tồn của con người, có khả năng thúc đẩy chúng ta rất mạnh mẽ, đặc biệt là hành vi hướng đến mục tiêu.</p>
+
+
+
+<p style="font-size:18px">&#8211; Nỗi buồn có tác dụng giúp đưa ra quyết định bình tĩnh và công bằng hơn (theo thí nghiệm của Joseph Forgas &#8211; nhà tâm lyus học xã hội tại Đại học New South Wales Úc).</p>
+
+
+
+<p style="font-size:18px">&#8211; Vui vẻ, hạnh phúc sẽ giúp tăng cường khả năng sáng tạo và tăng tốc độ khi đưa ra quyết định.</p>
+
+
+
+<p style="font-size:18px"><strong>5. THÓI QUEN</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Việc tạo thói quen chính là cách tốt nhất để tiết kiệm sức mạnh ý chí, qua đó giúp duy trì sự tập trung lâu dài hơn. Một trong những bí quyết để giúp phát triển thói quen, đó là giảm thiểu sự phán đoán và quyết định.</p>
+
+
+
+<p style="font-size:18px">&#8211; Thay vì loay hoay suy nghĩ mỗi sáng nên ăn gì mặc gì, bạn có thể tạo thói quen lựa chọn quần áo trước khi đi ngủ, như vậy sáng hôm sau dậy sẽ không bị rơi vào trạng thái mệt mỏi vì quyết định (decision fatigue), để từ đó giúp tiết kiệm năng lượng để có thể tập trung vào công việc chính trong ngày.</p>
+
+
+
+<p style="font-size:18px"><strong>6. VẬN ĐỘNG</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Nghiên cứu khoa học đã chỉ ra rằng các kỹ năng nhận thức, tập trung và tư duy tăng lên trong 3-4 tiếng sau 20 phút tập thể dục nhẹ.</p>
+
+
+
+<p style="font-size:18px">&#8211; Nhóm nghiên cứu của trường đại học Essex, Anh đã phát hiện ra tác dụng tuyệt vời của việc tập thể dục 5 phút giữa màu xanh cây cối ở những không gian ngoài trời như công viên đến khả năng tập trung.</p>
+
+
+
+<p style="font-size:18px">&#8211; Nói cách khác, chúng ta không nhất thiết phải tập đổ mồ hôi, mà đôi lúc chỉ cần tập nhẹ nhàng vẫn có tác dụng đến việc cải thiện sự tập trung học và làm việc.</p>
+
+
+
+<p style="font-size:18px"><strong>7. THIỀN</strong></p>
+
+
+
+<p style="font-size:18px">&#8211; Nhìn từ góc độ khoa học, khi não bộ quen với thiền định, khả năng tập trung và chú ý sẽ được cải thiện. Một trong những lợi ích lớn nhất khi thiền, đó là năng lực nhận thức sẽ được nâng cao.</p>
+
+
+
+<p style="font-size:18px">&#8211; Trong đầu chúng ta sẽ thường xuyên xuất hiện các suy nghĩ thoáng qua, và tập thiền sẽ giúp ta ý thức được rằng bản thân đang suy nghĩ về điều đó. Điều này vốn rất có lợi và hiệu quả, giúp bản thân tránh rơi vào tình trạng xao nhãng và trở nên vô thức vì những suy nghĩ bất chợt vốn xuất hiện khi đang cần tập trung học và làm việc.</p>
+
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="right-sidebar">
+            <!-- Nội dung của thanh bên phải -->
+            <div class="box">
+                <h2>Giới thiệu</h2>
+                <p>Thông tin giới thiệu về website công ty...</p>
+            </div>
+            <div class="box">
+                <h2>Lịch biểu công việc</h2>
+                <div id="clock" class="clock"></div>
+                <div id="calendar" class="calendar"></div>
+                <p>Thông tin lịch biểu công việc và lịch phòng...</p>
+                <a href="#">Xem chi tiết lịch biểu</a>
             </div>
         </div>
     </main>
@@ -168,6 +339,73 @@
                 }
             }
         }
+
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault();
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('username');
+            window.location.href = 'home.html';
+        });
+
+        // Kiểm tra trạng thái đăng nhập
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'home.html';
+        } else {
+            document.querySelector('.username').innerText = localStorage.getItem('username');
+        }
+
+        // Thêm đồng hồ thời gian thực
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            clockElement.innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Thêm lịch tháng
+        function generateCalendar() {
+            const calendarElement = document.getElementById('calendar');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const monthNames = [
+                'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 
+                'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+            ];
+
+            let calendarHTML = `<table><tr><th colspan="7">${monthNames[month]} ${year}</th></tr>`;
+            calendarHTML += `<tr><th>CN</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th></tr><tr>`;
+
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += `<td></td>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                if ((day + firstDay - 1) % 7 === 0 && day !== 1) {
+                    calendarHTML += `</tr><tr>`;
+                }
+                if (day === now.getDate()) {
+                    calendarHTML += `<td class="today">${day}</td>`;
+                } else {
+                    calendarHTML += `<td>${day}</td>`;
+                }
+            }
+
+            calendarHTML += '</tr></table>';
+
+            calendarElement.innerHTML = calendarHTML;
+        }
+
+        generateCalendar();
     </script>
 </body>
 </html>

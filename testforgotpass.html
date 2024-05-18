@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yêu cầu cấp lại mật khẩu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .reset-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        .reset-container h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .reset-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .reset-form button {
+            width: 100%;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .reset-form button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .message.success {
+            color: green;
+        }
+
+        .message.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="reset-container">
+    <h2>Yêu cầu cấp lại mật khẩu</h2>
+    <form class="reset-form" id="reset-form">
+        <input type="email" name="email" id="email" placeholder="Nhập email liên kết với tài khoản" required>
+        <button type="submit">Gửi yêu cầu</button>
+        <div class="message" id="message"></div>
+    </form>
+</div>
+
+<script>
+    function generateRandomPassword() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let password = '';
+        for (let i = 0; i < 6; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return password;
+    }
+
+    document.getElementById('reset-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const newPassword = generateRandomPassword();
+        
+        // Sử dụng EmailJS để gửi email (https://www.emailjs.com/)
+        emailjs.init("lbNc8MMLN_kG-Z8Es");  // Thay thế bằng EmailJS user ID của bạn
+
+        emailjs.send("service_vu6s16s", "template_v27qofx", {
+            to_email: email,
+            new_password: newPassword
+        })
+        .then(function(response) {
+            document.getElementById('message').textContent = 'Mật khẩu mới đã được gửi đến email của bạn.';
+            document.getElementById('message').className = 'message success';
+        }, function(error) {
+            document.getElementById('message').textContent = 'Đã xảy ra lỗi khi gửi email. Vui lòng thử lại.';
+            document.getElementById('message').className = 'message error';
+        });
+    });
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</body>
+</html>
